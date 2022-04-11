@@ -37,4 +37,17 @@ public class RestApiTests {
     }
 
 
+    @Test
+    void unsuccessfulRegisterTest() {
+        String authorisedData = "{ \"email\": \"sydney@fife\" }";
+        given()
+                .body(authorisedData)
+                .contentType(JSON)
+                .when()
+                .post("https://reqres.in/api/register")
+                .then()
+                .statusCode(400)
+                .body("error",is("Missing password"));
+    }
+
 }
