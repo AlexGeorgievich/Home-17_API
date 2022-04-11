@@ -15,4 +15,11 @@ public class RestApiTests {
                 .body("data.first_name",is("Janet"));
     }
 
+    @Test
+    void checkStatus404() {
+        get("https://reqres.in/api/users/23")
+                .then()
+                .statusCode(404);
+    }
+
 }
